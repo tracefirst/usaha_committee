@@ -8,7 +8,7 @@
             All rights reserved.
             http://www.tracefirst.com/
         </xs:documentation>
-        <xs:documentation>This XML Schema and related documentation is licensed under the terms and conditions specified at http://www.statevet.com/dev/legal</xs:documentation>
+        <xs:documentation>This XML Schema is Copyright © Trace First Limited and is made available under their XML Schema Public License v1. This license is accessible at http://www.statevet.com/xml/public-license-v1.pdf</xs:documentation>
     </xs:annotation>
     <xs:element name="eCVI">
         <xs:complexType>
