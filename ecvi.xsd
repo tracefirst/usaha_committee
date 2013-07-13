@@ -23,6 +23,8 @@
                         <xs:attribute name="NationalAccreditationNumber" type="xs:string"/>
                     </xs:complexType>
                 </xs:element>
+                <xs:element maxOccurs="1" minOccurs="1" name="MovementPurposes"
+                    type="MovementPurposeListType"/>
                 <xs:element name="Origin" type="PremType"> </xs:element>
                 <xs:element name="Destination" type="PremType"/>
                 <xs:element minOccurs="0" name="Consignor" type="PremType"/>
@@ -474,4 +476,26 @@
             <xs:element minOccurs="0" name="ResultFloat" type="xs:float"/>
         </xs:all>
     </xs:complexType>
+    <xs:complexType name="MovementPurposeListType">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="1" name="MovementPurpose"
+                type="MovementPurposeType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="MovementPurposeType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="show"/>
+            <xs:enumeration value="race"/>
+            <xs:enumeration value="rodeo"/>
+            <xs:enumeration value="sale"/>
+            <xs:enumeration value="pet"/>
+            <xs:enumeration value="breeding"/>
+            <xs:enumeration value="feeding"/>
+            <xs:enumeration value="grazing"/>
+            <xs:enumeration value="training"/>
+            <xs:enumeration value="slaughter"/>
+            <xs:enumeration value="medicalTreatment"/>
+            <xs:enumeration value="other"/>
+        </xs:restriction>
+    </xs:simpleType>
 </xs:schema>
