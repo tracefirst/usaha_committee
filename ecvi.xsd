@@ -169,9 +169,13 @@
             <xs:documentation>This enforces the list of allowed codes for animal sex types that are supported.</xs:documentation>
         </xs:annotation>
         <xs:restriction base="xs:string">
-            <xs:enumeration value="F"/>
-            <xs:enumeration value="M"/>
-            <xs:enumeration value="UNK"/>
+            <xs:enumeration value="Female"/>
+            <xs:enumeration value="Male"/>
+            <xs:enumeration value="Gender Unknown"/>
+            <xs:enumeration value="Neutered Female"/>
+            <xs:enumeration value="Neutered Male"/>
+            <xs:enumeration value="True Hermaphrodite"/>
+            <xs:enumeration value="Other"/>
         </xs:restriction>
     </xs:simpleType>
     <xs:complexType name="Address">
