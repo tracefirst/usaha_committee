@@ -52,7 +52,7 @@
                                         </xs:attribute>
                                     </xs:complexType>
                                 </xs:element>
-                                <xs:element maxOccurs="unbounded" name="Test" type="TestType"/>
+                                <xs:element maxOccurs="unbounded" name="Test" type="TestType" minOccurs="0"/>
                             </xs:sequence>
                             <xs:attribute name="Age" type="AgeType"/>
                             <xs:attribute name="Breed" type="BreedType"/>
