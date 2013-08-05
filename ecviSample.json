@@ -5,7 +5,6 @@
       "species": "Bovine",
       "vacs": [
         {
-          "id": 2,
           "vaccinationDate": "2013-08-05T05:00:00.000Z",
           "expirationDate": "2013-08-30T05:00:00.000Z",
           "manufacturer": "Boehringer Ingelheim",
@@ -34,9 +33,12 @@
       "color": "pink",
       "isGroup": true,
       "age": "3 years",
+      "estimatedDob": "2013-07-14T05:00:00.000Z",
       "name": "group 2",
       "gender": "male",
-      "images": []
+      "images": [
+        
+      ]
     }
   ],
   "animals": [
