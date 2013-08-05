@@ -1,0 +1,175 @@
+{
+  "animalGroups": [
+    {
+      "breed": "Swiss",
+      "species": "Bovine",
+      "vacs": [
+        {
+          "id": 2,
+          "vaccinationDate": "2013-08-05T05:00:00.000Z",
+          "expirationDate": "2013-08-30T05:00:00.000Z",
+          "manufacturer": "Boehringer Ingelheim",
+          "name": "Trichomoniasis",
+          "remarks": "not really...",
+          "lotNumber": "3456thgy",
+          "type": "Modified Live",
+        }
+      ],
+      "ids": "[[\"45\"],[\"46\"],[\"47\"],[\"48\"],[\"49\"],[\"50\"],[\"51\"],[\"52\"],[\"53\"],[\"54\"],[\"55\"],[\"56\"],[\"57\"]]",
+      "idTypes": "tags",
+      "label": "group 2",
+      "remarks": "sample group remarks",
+      "headCount": 13,
+      "tests": [
+        {
+          "result": "Negative",
+          "name": "Bovine Adenovirus 3",
+          "accession": "2222444rrr",
+          "type": "Culture",
+          "resultDate": "2013-08-05T05:00:00.000Z",
+          "date": "2013-08-02T05:00:00.000Z",
+          "lab": "Ada Veterinary Clinic\r\n1020 Sandy Creek Drive\r\nAda, OK 74820\r\n",
+        }
+      ],
+      "color": "pink",
+      "isGroup": true,
+      "age": "3 years",
+      "name": "group 2",
+      "gender": "male",
+      "images": []
+    }
+  ],
+  "animals": [
+    
+  ],
+  "areaStatuses": [
+    "Tuberculosis-Free",
+    "Brucellosis-Free",
+    "PRV-Free"
+  ],
+  "brandInspectionDate": null,
+  "brandInspectionNumber": null,
+  "carrier": {
+    "lastName": "Fenix",
+    "name": "Marcus Fenix",
+    "type": "Person",
+    "firstName": "Marcus",
+    "phone1": "555-444-1234",
+    "ownerEmail": "marcus@funweek.com",
+    "mi": null,
+  },
+  "carrierPremises": {
+    "postalCode": "56789",
+    "fax": null,
+    "nationalId": "premisesId",
+    "county": null,
+    "state": "IA",
+    "plus4": null,
+    "addressLine2": "Suite 102",
+    "addressLine1": "4567 Main Street",
+    "city": "Ankeny"
+  },
+  "carrierType": "Truck\/Trailer",
+  "certNumber": null,
+  "consignee": {
+    "lastName": "Fenix",
+    "name": "Marcus Fenix",
+    "type": "Person",
+    "firstName": "Marcus",
+    "phone1": "555-444-1234",
+    "ownerEmail": "marcus@funweek.com",
+    "mi": null,
+  },
+  "consigneePremises": {
+    "postalCode": "56789",
+    "fax": null,
+    "nationalId": "premisesId",
+    "county": null,
+    "state": "IA",
+    "plus4": null,
+    "addressLine2": "Suite 102",
+    "addressLine1": "4567 Main Street",
+    "city": "Ankeny"
+  },
+  "consignor": {
+    "lastName": "Holecroft",
+    "name": "Robert Holecroft",
+    "type": "Person",
+    "firstName": "Robert",
+    "phone1": "555-444-1234",
+    "ownerEmail": null,
+    "mi": null,
+  },
+  "consignorPremises": {
+    "postalCode": "12345",
+    "fax": null,
+    "nationalId": "premisesId",
+    "county": null,
+    "state": "IA",
+    "plus4": null,
+    "addressLine2": "Suite 100",
+    "addressLine1": "1234 Main Street",
+    "city": "Ames"
+  },
+  "destination": {
+    "id": 4,
+    "lastName": "Fenix",
+    "name": "Marcus Fenix",
+    "type": "Person",
+    "firstName": "Marcus",
+    "phone1": "555-444-1234",
+    "ownerEmail": "marcus@funweek.com",
+    "mi": null,
+  },
+  "destinationPremises": {
+    "postalCode": "56789",
+    "fax": null,
+    "nationalId": "premisesId",
+    "county": null,
+    "state": "IA",
+    "plus4": null,
+    "addressLine2": "Suite 102",
+    "addressLine1": "4567 Main Street",
+    "city": "Ankeny"
+  },
+  "effectiveDate": "2013-08-05T22:51:42.824Z",
+  "expirationDate": "2013-11-03T23:51:42.824Z",
+  "headCount": 13,
+  "herdFreeFor": [
+    "freeForTb",
+    "freeForJohnes"
+  ],
+  "herdStatusNumber": "ecvi1",
+  "inspectionDate": "2013-08-02T05:00:00.000Z",
+  "lastUpdated": "2013-08-05T23:04:43.932Z",
+  "origin": {
+    "lastName": "Holecroft",
+    "name": "Robert Holecroft",
+    "type": "Person",
+    "firstName": "Robert",
+    "phone1": "555-444-1234",
+    "ownerEmail": null,
+    "mi": null
+  },
+  "originPremises": {
+    "postalCode": "12345",
+    "fax": null,
+    "nationalId": "premisesId",
+    "county": null,
+    "state": "IA",
+    "plus4": null,
+    "addressLine2": "Suite 100",
+    "addressLine1": "1234 Main Street",
+    "city": "Ames"
+  },
+  "permitNumber": null,
+  "purposeOfMovement": "Sale",
+  "remarks": "| I have examined the premises of origin and have found no signs of vesicular stomatitis. \r\n",
+  "signingDate": null,
+  "species": "Bovine",
+  "status": {
+    "enumType": "gvl.cert.CertStatus",
+    "name": "SAVED"
+  },
+  "vet": []
+}
