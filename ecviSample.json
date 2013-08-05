@@ -114,7 +114,6 @@
     "city": "Ames"
   },
   "destination": {
-    "id": 4,
     "lastName": "Fenix",
     "name": "Marcus Fenix",
     "type": "Person",
