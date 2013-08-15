@@ -210,26 +210,36 @@
                     </xs:restriction>
                 </xs:simpleType>
             </xs:element>
+            <xs:element minOccurs="0" name="County" type="CountyType">
+                <xs:annotation>
+                    <xs:documentation>County of the premises address</xs:documentation>
+                </xs:annotation>
+            </xs:element>
             <xs:element minOccurs="1" name="State" type="UsState">
                 <xs:annotation>
                     <xs:documentation>State of the premises address</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element minOccurs="0" name="ZIP" type="ZipCode">
+            <xs:element minOccurs="1" name="ZIP" type="ZipCode">
                 <xs:annotation>
                     <xs:documentation>ZipCode of the premises address</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element minOccurs="1" name="Country" type="ISO3166CountryType">
+            <xs:element minOccurs="0" name="Country" type="ISO3166CountryType">
                 <xs:annotation>
                     <xs:documentation>Country of the premises address</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="GeoPoint" type="GeoPointType">
+                <xs:annotation>
+                    <xs:documentation>The co-ordinates of this premises</xs:documentation>
                 </xs:annotation>
             </xs:element>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="PremType">
         <xs:sequence>
-            <xs:element name="PremId" type="PremIdType"/>
+            <xs:element name="PremId" type="PremIdType" minOccurs="0"/>
             <xs:element name="PremName" type="xs:string" minOccurs="0"/>
             <xs:element name="Address" type="Address"/>
             <xs:element maxOccurs="unbounded" name="Person" type="PersonType"/>
@@ -241,6 +251,15 @@
         </xs:annotation>
         <xs:restriction base="xs:string">
             <xs:pattern value="[A-Z0-9]{4,10}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="CountyType">
+        <xs:annotation>
+            <xs:documentation>From "Lee" to "Aleutians West Census Area" and beyond!</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:minLength value="3"/>
+            <xs:maxLength value="40"/>
         </xs:restriction>
     </xs:simpleType>
     <xs:simpleType name="UsState">
@@ -330,6 +349,28 @@
             <xs:pattern value="[0-9]{5}-[0-9]{4}"/>
         </xs:restriction>
     </xs:simpleType>
+    <xs:simpleType name="LatitudeType">
+        <xs:annotation>
+            <xs:documentation>A positive number indicates North; negative indicates South</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="-90.0"/>
+            <xs:maxInclusive value="90.0"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="LongitudeType">
+        <xs:annotation>
+            <xs:documentation>A negative number indicates West; a positive number indicates East</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="-180.0"/>
+            <xs:maxInclusive value="180.0"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="GeoPointType">
+        <xs:attribute name="lat" type="LatitudeType" use="required"/>
+        <xs:attribute name="lng" type="LongitudeType" use="required"/>
+    </xs:complexType>
     <xs:complexType name="PersonType">
         <xs:sequence>
             <xs:element name="Name" type="xs:string"/>
