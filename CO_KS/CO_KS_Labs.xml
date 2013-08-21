@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eCVI xmlns="StateVet"
+      CviNumber="56-3214-1377095646"
+      SpeciesCode="BOV"
+      InspectionDate="2013-08-02"
+      IssueDate="2013-08-02"
+      ExpirationDate="2013-08-02"
+      EntryPermitNumber="PERMIT1234">
+   <Veterinarian LicenseNumber="3214" NationalAccreditationNumber="001234">
+      <Person>
+         <Name>VINNY VET</Name>
+         <Phone Type="Unknown" Number="8033211234"/>
+      </Person>
+      <Address>
+         <Line1>444 FITH ST</Line1>
+         <Town>FIRTH</Town>
+         <State>SC</State>
+         <ZIP>33322</ZIP>
+         <Country>USA</Country>
+      </Address>
+   </Veterinarian>
+   <MovementPurposes>
+      <MovementPurpose>feeding</MovementPurpose>
+   </MovementPurposes>
+   <Origin>
+      <PremId>SC1234</PremId>
+      <PremName>SELLER SALES</PremName>
+      <Address>
+         <Line1>123 4TH ST</Line1>
+         <Town>NORTH</Town>
+         <State>SC</State>
+         <ZIP>22233</ZIP>
+         <Country>USA</Country>
+      </Address>
+      <Person>
+         <Name>SELLER, SALLY</Name>
+         <Phone Type="Unknown" Number="8034321234"/>
+      </Person>
+   </Origin>
+   <Destination>
+      <PremName>BUYERS B US</PremName>
+      <Address>
+         <Line1>432 FIRST AVE</Line1>
+         <Town>SOUTH</Town>
+         <State>ND</State>
+         <ZIP>65432</ZIP>
+         <Country>USA</Country>
+      </Address>
+      <Person>
+         <Name>BUYER, BILLY</Name>
+         <Phone Type="Unknown" Number="8765671234"/>
+      </Person>
+   </Destination>
+   <Consignor>
+      <Person>
+         <Name>CAROLE CONSIGNOR</Name>
+      </Person>
+   </Consignor>
+   <Consignee>
+      <Person>
+         <Name>CARL CONSIGNEE</Name>
+      </Person>
+   </Consignee>
+   <Accessions>
+      <Accession id="EIA3" InfieldTest="false">
+         <Laboratory AccessionDate="2013-07-27" AccessionNumber="C1301234">
+            <LabName>CUVDC</LabName>
+         </Laboratory>
+      </Accession>
+      <Accession id="BRUC1" InfieldTest="false">
+         <Laboratory AccessionDate="2013-07-27"/>
+      </Accession>
+      <Accession id="BRUC2" InfieldTest="false">
+         <Laboratory AccessionDate="2013-07-27"/>
+      </Accession>
+   </Accessions>
+   <Animal Age="5Y" Breed="BRD" Sex="Female">
+      <AnimalTag Number="56XXX1243"/>
+      <Test idref="BRUC1" TestCode="BRUC" ResultName="RESULT">
+         <Result>
+            <ResultString>NEG</ResultString>
+         </Result>
+      </Test>
+   </Animal>
+   <Animal Age="5Y" Breed="AN" Sex="Female">
+      <AnimalTag Number="56XXX1242"/>
+      <Test idref="BRUC2" TestCode="BRUC" ResultName="RESULT">
+         <Result>
+            <ResultString>NEG</ResultString>
+         </Result>
+      </Test>
+   </Animal>
+   <Animal Age="3Y" Breed="AD" Sex="Male">
+      <AnimalTag Number=""/>
+      <Test idref="EIA3" TestCode="EIA" ResultName="RESULT">
+         <Result>
+            <ResultString>NEG</ResultString>
+         </Result>
+      </Test>
+   </Animal>
+</eCVI>
