@@ -17,7 +17,7 @@
                     <xs:complexType>
                         <xs:sequence>
                             <xs:element maxOccurs="1" name="Person" type="PersonType"/>
-                            <xs:element name="Address" type="Address"/>
+                            <xs:element name="Address" type="Address" minOccurs="0"/>
                         </xs:sequence>
                         <xs:attribute name="LicenseNumber" type="xs:string"/>
                         <xs:attribute name="NationalAccreditationNumber" type="xs:string"/>
@@ -27,8 +27,8 @@
                     type="MovementPurposeListType"/>
                 <xs:element name="Origin" type="PremType"> </xs:element>
                 <xs:element name="Destination" type="PremType"/>
-                <xs:element minOccurs="0" name="Consignor" type="PremType"/>
-                <xs:element minOccurs="0" name="Consignee" type="PremType"/>
+                <xs:element minOccurs="0" name="Consignor" type="ContactType"/>
+                <xs:element minOccurs="0" name="Consignee" type="ContactType"/>
                 <xs:element minOccurs="0" name="Accessions">
                     <xs:complexType>
                         <xs:sequence>
@@ -52,7 +52,8 @@
                                         </xs:attribute>
                                     </xs:complexType>
                                 </xs:element>
-                                <xs:element maxOccurs="unbounded" name="Test" type="TestType" minOccurs="0"/>
+                                <xs:element maxOccurs="unbounded" name="Test" type="TestType"
+                                    minOccurs="0"/>
                             </xs:sequence>
                             <xs:attribute name="Age" type="AgeType"/>
                             <xs:attribute name="Breed" type="BreedType"/>
@@ -242,6 +243,14 @@
             <xs:element name="PremId" type="PremIdType" minOccurs="0"/>
             <xs:element name="PremName" type="xs:string" minOccurs="0"/>
             <xs:element name="Address" type="Address"/>
+            <xs:element maxOccurs="unbounded" name="Person" type="PersonType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ContactType">
+        <xs:sequence>
+            <xs:element name="PremId" type="PremIdType" minOccurs="0"/>
+            <xs:element name="PremName" type="xs:string" minOccurs="0"/>
+            <xs:element name="Address" type="Address" minOccurs="0"/>
             <xs:element maxOccurs="unbounded" name="Person" type="PersonType"/>
         </xs:sequence>
     </xs:complexType>
@@ -465,12 +474,12 @@
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element name="LabName" type="xs:string" minOccurs="0"/>
-                        <xs:element name="PremId" type="PremIdType">
+                        <xs:element name="PremId" type="PremIdType" minOccurs="0">
                             <xs:annotation>
                                 <xs:documentation>This is the Premises ID for the Laboratory. If it is an in-field test, then the premises ID of the farm on which the tests were performed should be used.</xs:documentation>
                             </xs:annotation>
                         </xs:element>
-                        <xs:element name="Address" type="Address">
+                        <xs:element name="Address" type="Address" minOccurs="0">
                             <xs:annotation>
                                 <xs:documentation>This is the address for the Laboratory. If it is an in-field test, then the address of the farm on which the tests were performed should be used.</xs:documentation>
                             </xs:annotation>
