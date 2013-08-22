@@ -242,9 +242,11 @@
     </xsl:template>
 
     <xsl:template name="Accessions">
+        <xsl:if test="/eCVI/vetInspection/cviPG1/species/large/table/item[eiaTestDate != 'N/A'] or
+                      /eCVI/vetInspection/cviPG1/species/large/table/item[brucTestDate != 'N/A'] ">
         <xsl:element name="Accessions">
             <xsl:for-each
-                select="/eCVI/vetInspection/cviPG1/species/large/table/item[eiaTestDate != 'N/A' and other != '']">
+                select="/eCVI/vetInspection/cviPG1/species/large/table/item[eiaTestDate != 'N/A']">
                 <xsl:element name="Accession">
                     <xsl:attribute name="id">EIA<xsl:value-of select="./itemIndex"/></xsl:attribute>
                     <xsl:attribute name="InfieldTest">
@@ -278,6 +280,7 @@
                 </xsl:element>
             </xsl:for-each>
         </xsl:element>
+        </xsl:if>
     </xsl:template>
 
 
