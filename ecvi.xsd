@@ -19,6 +19,7 @@
                             <xs:element maxOccurs="1" name="Person" type="PersonType"/>
                             <xs:element name="Address" type="Address" minOccurs="0"/>
                         </xs:sequence>
+                        <xs:attribute name="LicenseIssueState" type="UsState"/>
                         <xs:attribute name="LicenseNumber" type="xs:string"/>
                         <xs:attribute name="NationalAccreditationNumber" type="xs:string"/>
                     </xs:complexType>
