@@ -38,7 +38,7 @@
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
-                <xs:sequence maxOccurs="unbounded">
+                <xs:sequence maxOccurs="unbounded" minOccurs="0">
                     <xs:element name="Animal">
                         <xs:complexType>
                             <xs:sequence maxOccurs="1" minOccurs="1">
@@ -63,6 +63,41 @@
                                 <xs:simpleType>
                                     <xs:restriction base="xs:string">
                                         <xs:maxLength value="100"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:attribute>
+                        </xs:complexType>
+                    </xs:element>
+                </xs:sequence>
+                <xs:sequence maxOccurs="unbounded" minOccurs="0">
+                    <xs:element name="GroupLot">
+                        <xs:complexType>
+                            <xs:attribute name="Quantity" type="xs:float" use="required">
+                                <xs:annotation>
+                                    <xs:documentation>This is the quantity of animals or other commodity included in this GroupLot element.</xs:documentation>
+                                </xs:annotation>
+                            </xs:attribute>
+                            <xs:attribute default="Number" name="Unit" type="xs:string"
+                                use="optional">
+                                <xs:annotation>
+                                    <xs:documentation>This is the type of Units that the Quantity refers to. For example, it could be pounds or gallons.</xs:documentation>
+                                </xs:annotation>
+                            </xs:attribute>
+                            <xs:attribute name="Species" type="SpeciesCodeType"/>
+                            <xs:attribute name="Age" type="AgeType"/>
+                            <xs:attribute name="Breed" type="BreedType"/>
+                            <xs:attribute name="Sex" type="SexType"/>
+                            <xs:attribute name="SexDetail">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:maxLength value="100"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:attribute>
+                            <xs:attribute name="Description" use="required">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:maxLength value="200"/>
                                     </xs:restriction>
                                 </xs:simpleType>
                             </xs:attribute>
