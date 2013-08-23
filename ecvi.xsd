@@ -58,6 +58,13 @@
                             <xs:attribute name="Age" type="AgeType"/>
                             <xs:attribute name="Breed" type="BreedType"/>
                             <xs:attribute name="Sex" type="SexType"/>
+                            <xs:attribute name="SexDetail">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:maxLength value="100"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:attribute>
                         </xs:complexType>
                     </xs:element>
                 </xs:sequence>
