@@ -167,11 +167,11 @@
     </xs:simpleType>
     <xs:simpleType name="AgeType">
         <xs:annotation>
-            <xs:documentation>This can be an age specified as a number of days, weeks, months or years (suffixed with D, W, M or Y to designate which) or a date of birth specified as "mm/dd/yyyy"</xs:documentation>
+            <xs:documentation>This can be an age specified as a number of days, weeks, months or years (suffixed with D, W, M or Y to designate which) or a date of birth specified as "YYYY-MM-DD"</xs:documentation>
         </xs:annotation>
         <xs:restriction base="xs:string">
             <xs:pattern value="[0-9]{1,2}[DWMY]"/>
-            <xs:pattern value="[01][0-9]/[0123][0-9]/[12][0-9]{3}"/>
+            <xs:pattern value="(19|20)\d\d-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])"/>
         </xs:restriction>
     </xs:simpleType>
     <xs:simpleType name="TagType">
