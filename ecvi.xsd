@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
-    targetNamespace="StateVet" version="6.0" xmlns="StateVet">
+    xmlns:ecvi="http://www.usaha.org/xmlns/ecvi/v0.1.0"
+    targetNamespace="ecvi" version="6.0" xmlns="ecvi">
 
     <xs:annotation>
         <xs:documentation>
