@@ -553,16 +553,15 @@
         </xs:attribute>
     </xs:complexType>
     <xs:complexType name="TestType">
-        <xs:choice>
-            <xs:element name="Result" type="ResultValueType"/>
-        </xs:choice>
+        <xs:sequence>
+            <xs:element name="Result" type="ResultValueType" maxOccurs="unbounded"/>
+        </xs:sequence>
         <xs:attribute name="idref" type="xs:IDREF" use="required">
             <xs:annotation>
                 <xs:documentation>This *must* be one of the ID values in the Accessions included with this document. If any Animal Test references an Accession ID that doesn't exist, the document will not be valid.</xs:documentation>
             </xs:annotation>
         </xs:attribute>
         <xs:attribute name="TestCode" type="xs:string" use="required"/>
-        <xs:attribute name="ResultName" type="ResultNameType"/>
     </xs:complexType>
     <xs:simpleType name="ResultNameType">
         <xs:annotation>
@@ -577,12 +576,14 @@
         <xs:annotation>
             <xs:documentation>You should choose the correct type for the result based on your source data type. We support Integer, Float and String.</xs:documentation>
         </xs:annotation>
-        <xs:all>
+        <xs:choice>
             <xs:element minOccurs="0" name="ResultInteger" type="xs:integer"/>
             <xs:element minOccurs="0" name="ResultString" type="xs:string"/>
             <xs:element minOccurs="0" name="ResultFloat" type="xs:float"/>
-        </xs:all>
+        </xs:choice>
+        <xs:attribute name="ResultName" type="ResultNameType" use="required"/>
     </xs:complexType>
+
     <xs:complexType name="MovementPurposeListType">
         <xs:sequence>
             <xs:element maxOccurs="unbounded" minOccurs="1" name="MovementPurpose"
