@@ -216,7 +216,7 @@
             <xs:enumeration value="Female"/>
             <xs:enumeration value="Male"/>
             <xs:enumeration value="Gender Unknown"/>
-            <xs:enumeration value="Neutered Female"/>
+            <xs:enumeration value="Spayed Female"/>
             <xs:enumeration value="Neutered Male"/>
             <xs:enumeration value="True Hermaphrodite"/>
             <xs:enumeration value="Other"/>
