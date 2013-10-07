@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
-    targetNamespace="http://www.usaha.org/xmlns/ecvi/v0.1.0" version="6.0" xmlns="http://www.usaha.org/xmlns/ecvi/v0.1.0">
+    targetNamespace="http://www.usaha.org/xmlns/ecvi" version="6.0" xmlns="http://www.usaha.org/xmlns/ecvi">
 
     <xs:annotation>
         <xs:documentation>
