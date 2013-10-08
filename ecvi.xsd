@@ -67,6 +67,11 @@
                                     </xs:restriction>
                                 </xs:simpleType>
                             </xs:attribute>
+                            <xs:attribute name="InspectionDate" type="xs:date" use="required">
+                                <xs:annotation>
+                                    <xs:documentation>This is the date on which the animals were inspected by the accrediting veterinarian. If the inspection took place over multiple days, the first day of the inspection should be used.</xs:documentation>
+                                </xs:annotation>
+                            </xs:attribute>
                         </xs:complexType>
                     </xs:element>
                 </xs:sequence>
@@ -121,11 +126,6 @@
             <xs:attribute name="SpeciesCode" type="SpeciesCodeType" use="required">
                 <xs:annotation>
                     <xs:documentation>This is the Species for all the animals contained in this CVI.</xs:documentation>
-                </xs:annotation>
-            </xs:attribute>
-            <xs:attribute name="InspectionDate" type="xs:date" use="required">
-                <xs:annotation>
-                    <xs:documentation>This is the date on which the animals were inspected by the accrediting veterinarian. If the inspection took place over multiple days, the first day of the inspection should be used.</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
             <xs:attribute name="IssueDate" type="xs:date" use="required">
