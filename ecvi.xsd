@@ -289,8 +289,8 @@ The age definitions adhere to UCUM - http://unitsofmeasure.org/ucum.html</xs:doc
             <xs:element name="PremId" type="PremIdType" minOccurs="0"/>
             <xs:element name="PremName" type="xs:string" minOccurs="0"/>
             <xs:element name="Address" type="Address"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" ref="ProgramStatusType"/>
-            <xs:element maxOccurs="unbounded" name="Person" type="PersonType"/>
+            <xs:element name="ProgramStatus" type="ProgramStatusType" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="Person" type="PersonType" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="ContactType">
@@ -298,7 +298,7 @@ The age definitions adhere to UCUM - http://unitsofmeasure.org/ucum.html</xs:doc
             <xs:element name="PremId" type="PremIdType" minOccurs="0"/>
             <xs:element name="PremName" type="xs:string" minOccurs="0"/>
             <xs:element name="Address" type="Address" minOccurs="0"/>
-            <xs:element maxOccurs="unbounded" name="Person" type="PersonType"/>
+            <xs:element name="Person" type="PersonType" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
     <xs:simpleType name="PremIdType">
@@ -309,37 +309,35 @@ The age definitions adhere to UCUM - http://unitsofmeasure.org/ucum.html</xs:doc
             <xs:pattern value="[A-Z0-9]{6,8}"/>
         </xs:restriction>
     </xs:simpleType>
-    <xs:element name="ProgramStatusType">
-        <xs:complexType>
-            <xs:attribute name="Name" use="required">
-                <xs:simpleType>
-                    <xs:restriction base="xs:string">
-                        <xs:enumeration value="Bovine Tuberculosis"/>
-                        <xs:enumeration value="Brucellosis (state)"/>
-                        <xs:enumeration value="Brucellosis (herd)"/>
-                    </xs:restriction>
-                </xs:simpleType>
-            </xs:attribute>
-            <xs:attribute name="Value" use="required">
-                <xs:annotation>
-                    <xs:documentation>If this is 'Other' you should elaborate using the ValueOther attribute</xs:documentation>
-                </xs:annotation>
-                <xs:simpleType>
-                    <xs:restriction base="xs:string">
-                        <xs:enumeration value="Free"/>
-                        <xs:enumeration value="Modified Accredited"/>
-                        <xs:enumeration value="Modified Advanced Accredited"/>
-                        <xs:enumeration value="Other"/>
-                    </xs:restriction>
-                </xs:simpleType>
-            </xs:attribute>
-            <xs:attribute name="ValueOther" type="xs:string">
-                <xs:annotation>
-                    <xs:documentation>You should only provide this attribute if the Value is 'Other'</xs:documentation>
-                </xs:annotation>
-            </xs:attribute>
-        </xs:complexType>
-    </xs:element>
+    <xs:complexType name="ProgramStatusType">
+        <xs:attribute name="Name" use="required">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="Bovine Tuberculosis"/>
+                    <xs:enumeration value="Brucellosis (state)"/>
+                    <xs:enumeration value="Brucellosis (herd)"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="Value" use="required">
+            <xs:annotation>
+                <xs:documentation>If this is 'Other' you should elaborate using the ValueOther attribute</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="Free"/>
+                    <xs:enumeration value="Modified Accredited"/>
+                    <xs:enumeration value="Modified Advanced Accredited"/>
+                    <xs:enumeration value="Other"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="ValueOther" type="xs:string">
+            <xs:annotation>
+                <xs:documentation>You should only provide this attribute if the Value is 'Other'</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
     <xs:simpleType name="CountyType">
         <xs:annotation>
             <xs:documentation>From "Lee" to "Aleutians West Census Area" and beyond!</xs:documentation>
