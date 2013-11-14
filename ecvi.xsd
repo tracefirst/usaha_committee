@@ -303,10 +303,10 @@ The age definitions adhere to UCUM - http://unitsofmeasure.org/ucum.html</xs:doc
     </xs:complexType>
     <xs:simpleType name="PremIdType">
         <xs:annotation>
-            <xs:documentation>NAIS Premises ID or State LID (4-10 uppercase letters and digits)</xs:documentation>
+            <xs:documentation>NAIS Premises ID or State LID (6-8 uppercase letters and digits)</xs:documentation>
         </xs:annotation>
         <xs:restriction base="xs:string">
-            <xs:pattern value="[A-Z0-9]{4,10}"/>
+            <xs:pattern value="[A-Z0-9]{6,8}"/>
         </xs:restriction>
     </xs:simpleType>
     <xs:element name="ProgramStatusType">
