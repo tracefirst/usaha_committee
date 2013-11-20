@@ -13,54 +13,51 @@
     </xs:annotation>
     <xs:element name="eCVI">
         <xs:complexType>
-            <xs:sequence maxOccurs="1" minOccurs="1">
-                <xs:element name="Veterinarian">
+            <xs:sequence minOccurs="1" maxOccurs="1">
+                <xs:element name="Veterinarian" minOccurs="1" maxOccurs="1">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element maxOccurs="1" name="Person" type="PersonType"/>
-                            <xs:element name="Address" type="Address" minOccurs="0"/>
+                            <xs:element name="Person" type="PersonType" minOccurs="1" maxOccurs="1"/>
+                            <xs:element name="Address" type="Address" minOccurs="0" maxOccurs="1"/>
                         </xs:sequence>
-                        <xs:attribute name="LicenseIssueState" type="UsState"/>
-                        <xs:attribute name="LicenseNumber" type="xs:string"/>
-                        <xs:attribute name="NationalAccreditationNumber" type="xs:string"/>
+                        <xs:attribute name="LicenseIssueState" type="UsState" use="optional"/>
+                        <xs:attribute name="LicenseNumber" type="xs:string" use="optional"/>
+                        <xs:attribute name="NationalAccreditationNumber" type="xs:string" use="optional"/>
                     </xs:complexType>
                 </xs:element>
-                <xs:element maxOccurs="1" minOccurs="1" name="MovementPurposes"
-                    type="MovementPurposeListType"/>
-                <xs:element name="Origin" type="PremType"> </xs:element>
-                <xs:element name="Destination" type="PremType"/>
-                <xs:element minOccurs="0" name="Consignor" type="ContactType"/>
-                <xs:element minOccurs="0" name="Consignee" type="ContactType"/>
-                <xs:element minOccurs="0" name="Accessions">
+                <xs:element name="MovementPurposes" type="MovementPurposeListType" minOccurs="1" maxOccurs="1"/>
+                <xs:element name="Origin" type="PremType" minOccurs="1" maxOccurs="1"/>
+                <xs:element name="Destination" type="PremType" minOccurs="1" maxOccurs="1"/>
+                <xs:element name="Consignor" type="ContactType" minOccurs="0" maxOccurs="1"/>
+                <xs:element name="Consignee" type="ContactType" minOccurs="0" maxOccurs="1"/>
+                <xs:element name="Accessions" minOccurs="0" maxOccurs="1">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element maxOccurs="unbounded" name="Accession" type="AccessionType"
-                            />
+                            <xs:element name="Accession" type="AccessionType" minOccurs="1" maxOccurs="unbounded"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
                 <xs:sequence maxOccurs="unbounded" minOccurs="0">
-                    <xs:element name="Animal">
+                    <xs:element name="Animal" minOccurs="1" maxOccurs="1">
                         <xs:complexType>
-                            <xs:sequence maxOccurs="1" minOccurs="1">
-                                <xs:element name="AnimalTag" maxOccurs="6">
+                            <xs:sequence minOccurs="1" maxOccurs="1">
+                                <xs:element name="AnimalTag" minOccurs="1" maxOccurs="6">
                                     <xs:complexType>
-                                        <xs:attribute name="Type" type="TagType"/>
+                                        <xs:attribute name="Type" type="TagType" use="optional"/>
                                         <xs:attribute name="Number" type="xs:string" use="required"/>
-                                        <xs:attribute name="BrandImage" type="xs:base64Binary">
+                                        <xs:attribute name="BrandImage" type="xs:base64Binary" use="optional">
                                             <xs:annotation>
                                                 <xs:documentation>This should be PNG/JPEG/GIF/PDF format and must be provided if the TagType is BRAND-IMAGE</xs:documentation>
                                             </xs:annotation>
                                         </xs:attribute>
                                     </xs:complexType>
                                 </xs:element>
-                                <xs:element maxOccurs="unbounded" name="Test" type="TestType"
-                                    minOccurs="0"/>
+                                <xs:element name="Test" type="TestType" minOccurs="0" maxOccurs="unbounded"/>
                             </xs:sequence>
-                            <xs:attribute name="Age" type="AgeType"/>
-                            <xs:attribute name="Breed" type="BreedType"/>
-                            <xs:attribute name="Sex" type="SexType"/>
-                            <xs:attribute name="SexDetail">
+                            <xs:attribute name="Age" type="AgeType" use="optional"/>
+                            <xs:attribute name="Breed" type="BreedType" use="optional"/>
+                            <xs:attribute name="Sex" type="SexType" use="optional"/>
+                            <xs:attribute name="SexDetail" use="optional">
                                 <xs:simpleType>
                                     <xs:restriction base="xs:string">
                                         <xs:maxLength value="100"/>
@@ -75,25 +72,24 @@
                         </xs:complexType>
                     </xs:element>
                 </xs:sequence>
-                <xs:sequence maxOccurs="unbounded" minOccurs="0">
-                    <xs:element name="GroupLot">
+                <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                    <xs:element name="GroupLot" minOccurs="1" maxOccurs="1">
                         <xs:complexType>
                             <xs:attribute name="Quantity" type="xs:float" use="required">
                                 <xs:annotation>
                                     <xs:documentation>This is the quantity of animals or other commodity included in this GroupLot element.</xs:documentation>
                                 </xs:annotation>
                             </xs:attribute>
-                            <xs:attribute default="Number" name="Unit" type="xs:string"
-                                use="optional">
+                            <xs:attribute default="Number" name="Unit" type="xs:string" use="optional">
                                 <xs:annotation>
                                     <xs:documentation>This is the type of Units that the Quantity refers to. For example, it could be pounds or gallons.</xs:documentation>
                                 </xs:annotation>
                             </xs:attribute>
-                            <xs:attribute name="Species" type="SpeciesCodeType"/>
-                            <xs:attribute name="Age" type="AgeType"/>
-                            <xs:attribute name="Breed" type="BreedType"/>
-                            <xs:attribute name="Sex" type="SexType"/>
-                            <xs:attribute name="SexDetail">
+                            <xs:attribute name="Species" type="SpeciesCodeType" use="optional"/>
+                            <xs:attribute name="Age" type="AgeType" use="optional"/>
+                            <xs:attribute name="Breed" type="BreedType" use="optional"/>
+                            <xs:attribute name="Sex" type="SexType" use="optional"/>
+                            <xs:attribute name="SexDetail" use="optional">
                                 <xs:simpleType>
                                     <xs:restriction base="xs:string">
                                         <xs:maxLength value="100"/>
@@ -110,8 +106,7 @@
                         </xs:complexType>
                     </xs:element>
                 </xs:sequence>
-                <xs:element maxOccurs="unbounded" minOccurs="0" name="Attachment"
-                    type="AttachmentType"/>
+                <xs:element name="Attachment" type="AttachmentType" minOccurs="0" maxOccurs="unbounded"/>
             </xs:sequence>
             <xs:attribute name="CviNumber" use="required">
                 <xs:annotation>
@@ -143,7 +138,7 @@
                     <xs:documentation>This is the date on which the animals will leave the origin premises to commence their interstate movement.</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
-            <xs:attribute name="EntryPermitNumber">
+            <xs:attribute name="EntryPermitNumber" use="optional">
                 <xs:simpleType>
                     <xs:restriction base="xs:string">
                         <xs:maxLength value="100"/>
@@ -227,7 +222,7 @@ The age definitions adhere to UCUM - http://unitsofmeasure.org/ucum.html</xs:doc
     </xs:simpleType>
     <xs:complexType name="Address">
         <xs:sequence>
-            <xs:element minOccurs="1" name="Line1">
+            <xs:element name="Line1" minOccurs="1" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation>First line of the premises address</xs:documentation>
                 </xs:annotation>
@@ -237,7 +232,7 @@ The age definitions adhere to UCUM - http://unitsofmeasure.org/ucum.html</xs:doc
                     </xs:restriction>
                 </xs:simpleType>
             </xs:element>
-            <xs:element minOccurs="0" name="Line2">
+            <xs:element name="Line2" minOccurs="0" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation>Second line of the premises address</xs:documentation>
                 </xs:annotation>
@@ -247,7 +242,7 @@ The age definitions adhere to UCUM - http://unitsofmeasure.org/ucum.html</xs:doc
                     </xs:restriction>
                 </xs:simpleType>
             </xs:element>
-            <xs:element minOccurs="1" name="Town">
+            <xs:element name="Town" minOccurs="1" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation>Town/City of the premises address</xs:documentation>
                 </xs:annotation>
@@ -257,27 +252,27 @@ The age definitions adhere to UCUM - http://unitsofmeasure.org/ucum.html</xs:doc
                     </xs:restriction>
                 </xs:simpleType>
             </xs:element>
-            <xs:element minOccurs="0" name="County" type="CountyType">
+            <xs:element name="County" type="CountyType" minOccurs="0" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation>County of the premises address</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element minOccurs="1" name="State" type="UsState">
+            <xs:element name="State" type="UsState" minOccurs="1" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation>State of the premises address</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element minOccurs="1" name="ZIP" type="ZipCode">
+            <xs:element name="ZIP" type="ZipCode" minOccurs="1" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation>ZipCode of the premises address</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element minOccurs="0" name="Country" type="ISO3166CountryType">
+            <xs:element name="Country" type="ISO3166CountryType" minOccurs="0" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation>Country of the premises address</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element minOccurs="0" name="GeoPoint" type="GeoPointType">
+            <xs:element name="GeoPoint" type="GeoPointType" minOccurs="0" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation>The co-ordinates of this premises</xs:documentation>
                 </xs:annotation>
@@ -286,19 +281,19 @@ The age definitions adhere to UCUM - http://unitsofmeasure.org/ucum.html</xs:doc
     </xs:complexType>
     <xs:complexType name="PremType">
         <xs:sequence>
-            <xs:element name="PremId" type="PremIdType" minOccurs="0"/>
-            <xs:element name="PremName" type="xs:string" minOccurs="0"/>
-            <xs:element name="Address" type="Address"/>
+            <xs:element name="PremId" type="PremIdType" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="PremName" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="Address" type="Address" minOccurs="1" maxOccurs="1"/>
             <xs:element name="ProgramStatus" type="ProgramStatusType" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element name="Person" type="PersonType" maxOccurs="unbounded"/>
+            <xs:element name="Person" type="PersonType" minOccurs="1" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="ContactType">
         <xs:sequence>
-            <xs:element name="PremId" type="PremIdType" minOccurs="0"/>
-            <xs:element name="PremName" type="xs:string" minOccurs="0"/>
-            <xs:element name="Address" type="Address" minOccurs="0"/>
-            <xs:element name="Person" type="PersonType" maxOccurs="unbounded"/>
+            <xs:element name="PremId" type="PremIdType" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="PremName" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="Address" type="Address" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="Person" type="PersonType" minOccurs="1" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
     <xs:simpleType name="PremIdType">
@@ -332,7 +327,7 @@ The age definitions adhere to UCUM - http://unitsofmeasure.org/ucum.html</xs:doc
                 </xs:restriction>
             </xs:simpleType>
         </xs:attribute>
-        <xs:attribute name="ValueOther" type="xs:string">
+        <xs:attribute name="ValueOther" type="xs:string" use="optional">
             <xs:annotation>
                 <xs:documentation>You should only provide this attribute if the Value is 'Other'</xs:documentation>
             </xs:annotation>
@@ -458,8 +453,8 @@ The age definitions adhere to UCUM - http://unitsofmeasure.org/ucum.html</xs:doc
     </xs:complexType>
     <xs:complexType name="PersonType">
         <xs:sequence>
-            <xs:element name="Name" type="xs:string"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" name="Phone" type="PhoneNumType"/>
+            <xs:element name="Name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="Phone" type="PhoneNumType" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="PhoneNumType">
@@ -471,7 +466,7 @@ The age definitions adhere to UCUM - http://unitsofmeasure.org/ucum.html</xs:doc
                 </xs:restriction>
             </xs:simpleType>
         </xs:attribute>
-        <xs:attribute name="Comment">
+        <xs:attribute name="Comment" use="optional">
             <xs:annotation>
                 <xs:documentation>This is meant for comments about this phone number. Examples might be an extension number or a comment such as "daytime only."</xs:documentation>
             </xs:annotation>
@@ -504,7 +499,7 @@ The age definitions adhere to UCUM - http://unitsofmeasure.org/ucum.html</xs:doc
     </xs:simpleType>
     <xs:complexType name="AttachmentType">
         <xs:sequence>
-            <xs:element name="Payload" type="xs:base64Binary"/>
+            <xs:element name="Payload" type="xs:base64Binary" minOccurs="1" maxOccurs="1"/>
         </xs:sequence>
         <xs:attribute name="DocType" use="required">
             <xs:annotation>
@@ -520,7 +515,7 @@ The age definitions adhere to UCUM - http://unitsofmeasure.org/ucum.html</xs:doc
                 </xs:restriction>
             </xs:simpleType>
         </xs:attribute>
-        <xs:attribute name="MimeType" type="MimeTypeType"/>
+        <xs:attribute name="MimeType" type="MimeTypeType" use="optional"/>
         <xs:attribute name="Filename" use="required">
             <xs:simpleType>
                 <xs:restriction base="xs:string">
@@ -528,7 +523,7 @@ The age definitions adhere to UCUM - http://unitsofmeasure.org/ucum.html</xs:doc
                 </xs:restriction>
             </xs:simpleType>
         </xs:attribute>
-        <xs:attribute name="Comment">
+        <xs:attribute name="Comment" use="optional">
             <xs:simpleType>
                 <xs:restriction base="xs:string">
                     <xs:maxLength value="250"/>
@@ -546,16 +541,16 @@ The age definitions adhere to UCUM - http://unitsofmeasure.org/ucum.html</xs:doc
     </xs:simpleType>
     <xs:complexType name="AccessionType">
         <xs:sequence>
-            <xs:element name="Laboratory">
+            <xs:element name="Laboratory" minOccurs="1" maxOccurs="1">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element name="LabName" type="xs:string" minOccurs="0"/>
-                        <xs:element name="PremId" type="PremIdType" minOccurs="0">
+                        <xs:element name="LabName" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                        <xs:element name="PremId" type="PremIdType" minOccurs="0" maxOccurs="1">
                             <xs:annotation>
                                 <xs:documentation>This is the Premises ID for the Laboratory. If it is an in-field test, then the premises ID of the farm on which the tests were performed should be used.</xs:documentation>
                             </xs:annotation>
                         </xs:element>
-                        <xs:element name="Address" type="Address" minOccurs="0">
+                        <xs:element name="Address" type="Address" minOccurs="0" maxOccurs="1">
                             <xs:annotation>
                                 <xs:documentation>This is the address for the Laboratory. If it is an in-field test, then the address of the farm on which the tests were performed should be used.</xs:documentation>
                             </xs:annotation>
@@ -566,7 +561,7 @@ The age definitions adhere to UCUM - http://unitsofmeasure.org/ucum.html</xs:doc
                             <xs:documentation>This is the date on which the samples were received by the laboratory.</xs:documentation>
                         </xs:annotation>
                     </xs:attribute>
-                    <xs:attribute name="AccessionNumber" type="xs:string">
+                    <xs:attribute name="AccessionNumber" type="xs:string" use="optional">
                         <xs:annotation>
                             <xs:documentation>This is the Accession Number of this accession/test chart.</xs:documentation>
                         </xs:annotation>
@@ -587,7 +582,7 @@ The age definitions adhere to UCUM - http://unitsofmeasure.org/ucum.html</xs:doc
     </xs:complexType>
     <xs:complexType name="TestType">
         <xs:sequence>
-            <xs:element name="Result" type="ResultValueType" maxOccurs="unbounded"/>
+            <xs:element name="Result" type="ResultValueType" minOccurs="1" maxOccurs="unbounded"/>
         </xs:sequence>
         <xs:attribute name="idref" type="xs:IDREF" use="required">
             <xs:annotation>
@@ -610,17 +605,16 @@ The age definitions adhere to UCUM - http://unitsofmeasure.org/ucum.html</xs:doc
             <xs:documentation>You should choose the correct type for the result based on your source data type. We support Integer, Float and String.</xs:documentation>
         </xs:annotation>
         <xs:choice>
-            <xs:element minOccurs="0" name="ResultInteger" type="xs:integer"/>
-            <xs:element minOccurs="0" name="ResultString" type="xs:string"/>
-            <xs:element minOccurs="0" name="ResultFloat" type="xs:float"/>
+            <xs:element name="ResultInteger" type="xs:integer" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="ResultString" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="ResultFloat" type="xs:float" minOccurs="0" maxOccurs="1"/>
         </xs:choice>
         <xs:attribute name="ResultName" type="ResultNameType" use="required"/>
     </xs:complexType>
 
     <xs:complexType name="MovementPurposeListType">
         <xs:sequence>
-            <xs:element maxOccurs="unbounded" minOccurs="1" name="MovementPurpose"
-                type="MovementPurposeType"/>
+            <xs:element name="MovementPurpose" type="MovementPurposeType" minOccurs="1" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
     <xs:simpleType name="MovementPurposeType">
