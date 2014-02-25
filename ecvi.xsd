@@ -311,6 +311,13 @@ The age definitions adhere to UCUM - http://unitsofmeasure.org/ucum.html</xs:doc
                     <xs:enumeration value="Bovine Tuberculosis"/>
                     <xs:enumeration value="Brucellosis (state)"/>
                     <xs:enumeration value="Brucellosis (herd)"/>
+                    <xs:enumeration value="Johne’s (herd)"/>
+                    <xs:enumeration value="NPIP (herd)"/>
+                    <xs:enumeration value="Scrapie (herd)"/>
+                    <xs:enumeration value="PRV (herd)"/>
+                    <xs:enumeration value="PRV (area)"/>
+                    <xs:enumeration value="Trichomoniasis (herd)"/>
+                    <xs:enumeration value="EIA (herd)"/>
                 </xs:restriction>
             </xs:simpleType>
         </xs:attribute>
