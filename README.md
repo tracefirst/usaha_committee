@@ -12,4 +12,8 @@ here:
 
 https://github.com/tracefirst/usaha_committee/issues
 
+If you want to record any conventions that are *within* the schema definition, please describe these here:
+
+https://github.com/tracefirst/usaha_committee/wiki/Conventions
+
 Thanks.
