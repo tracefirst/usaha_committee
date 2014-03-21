@@ -55,6 +55,11 @@
                                 <xs:element name="Test" type="TestType" minOccurs="0" maxOccurs="unbounded"/>
                             </xs:sequence>
                             <xs:attribute name="Age" type="AgeType" use="optional"/>
+                            <xs:attribute name="SpeciesCode" type="SpeciesCodeType" use="required">
+                                <xs:annotation>
+                                    <xs:documentation>This is the Species for this animal.</xs:documentation>
+                                </xs:annotation>
+                            </xs:attribute>
                             <xs:attribute name="Breed" type="BreedType" use="optional"/>
                             <xs:attribute name="Sex" type="SexType" use="optional"/>
                             <xs:attribute name="SexDetail" use="optional">
@@ -117,11 +122,6 @@
                         <xs:maxLength value="100"/>
                     </xs:restriction>
                 </xs:simpleType>
-            </xs:attribute>
-            <xs:attribute name="SpeciesCode" type="SpeciesCodeType" use="required">
-                <xs:annotation>
-                    <xs:documentation>This is the Species for all the animals contained in this CVI.</xs:documentation>
-                </xs:annotation>
             </xs:attribute>
             <xs:attribute name="IssueDate" type="xs:date" use="required">
                 <xs:annotation>
