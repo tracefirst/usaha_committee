@@ -1,25 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0" xmlns="StateVet"
-    xmlns:my="http://www.clemson.edu/public/lph/StdECVI">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"
+    xmlns="http://www.usaha.org/xmlns/ecvi" xmlns:ecvi="http://www.usaha.org/xmlns/ecvi"
+    xmlns:my="http://www.clemson.edu/public/lph/StdECVI"
+    xmlns:xfa="http://www.xfa.org/schema/xfa-data/1.0/">
     <xsl:output indent="yes" method="xml"/>
     <xsl:strip-space elements="*"/>
     <!-- Get the terrible lookup code stuff out into its own file.  -->
     <xsl:include href="./SpeciesBreedTrans.xsl"/>
 
-    <xsl:template match="/">
-        <xsl:apply-templates select="/eCVI"/>
+    <xsl:template match="xfa:data">
+        <xsl:apply-templates select="eCVI"/>
     </xsl:template>
 
     <xsl:template match="eCVI">
         <xsl:element name="eCVI">
             <xsl:attribute name="CviNumber">
                 <xsl:value-of select="certificate"/>
-            </xsl:attribute>
-            <xsl:attribute name="SpeciesCode">
-                <xsl:call-template name="Species"/>
-            </xsl:attribute>
-            <xsl:attribute name="InspectionDate">
-                <xsl:value-of select="vetInspection/cviPG1/inspDate"/>
             </xsl:attribute>
             <xsl:attribute name="IssueDate">
                 <xsl:value-of select="certDate"/>
@@ -37,18 +33,18 @@
                     <xsl:value-of select="entryPermit"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:apply-templates select="/eCVI/vetInspection/vetCertification"/>
-            <xsl:apply-templates select="/eCVI/vetInspection/cviPG1/carrier/purpose"/>
-            <xsl:apply-templates select="/eCVI/vetInspection/cviPG1/consignor"/>
-            <xsl:apply-templates select="/eCVI/vetInspection/cviPG1/consignee"/>
-            <xsl:apply-templates select="/eCVI/vetInspection/cviPG1/consignor/ownerAdd"/>
-            <xsl:apply-templates select="/eCVI/vetInspection/cviPG1/consignee/ownerAdd"/>
+            <xsl:apply-templates select="vetInspection/vetCertification"/>
+            <xsl:apply-templates select="vetInspection/cviPG1/carrier/purpose"/>
+            <xsl:apply-templates select="vetInspection/cviPG1/consignor"/>
+            <xsl:apply-templates select="vetInspection/cviPG1/consignee"/>
+            <xsl:apply-templates select="vetInspection/cviPG1/consignor/ownerAdd"/>
+            <xsl:apply-templates select="vetInspection/cviPG1/consignee/ownerAdd"/>
             <xsl:call-template name="Accessions"/>
-            <xsl:apply-templates select="/eCVI/vetInspection/cviPG1/species/large/table"/>
+            <xsl:apply-templates select="vetInspection/cviPG1/species/large/table"/>
         </xsl:element>
     </xsl:template>
 
-    <xsl:template match="/eCVI/vetInspection/vetCertification">
+    <xsl:template match="eCVI/vetInspection/vetCertification">
         <xsl:element name="Veterinarian">
             <xsl:if test="licenseNumber and licenseNumber!=''">
                 <xsl:attribute name="LicenseNumber">
@@ -62,12 +58,12 @@
             </xsl:if>
             <xsl:element name="Person">
                 <xsl:element name="Name">
-                    <xsl:value-of select="/eCVI/printedName"/>
+                    <xsl:value-of select="../../printedName"/>
                 </xsl:element>
                 <xsl:if test="phoneNum and phoneNum!=''">
                     <xsl:element name="Phone">
                         <xsl:attribute name="Type">Unknown</xsl:attribute>
-                        <xsl:attribute name="Number" select="phoneNum"/>
+                        <xsl:attribute name="Number"><xsl:value-of select="phoneNum"/></xsl:attribute>
                     </xsl:element>
                 </xsl:if>
             </xsl:element>
@@ -91,7 +87,7 @@
         </xsl:element>
     </xsl:template>
 
-    <xsl:template match="/eCVI/vetInspection/cviPG1/carrier/purpose">
+    <xsl:template match="eCVI/vetInspection/cviPG1/carrier/purpose">
         <xsl:element name="MovementPurposes">
             <xsl:element name="MovementPurpose">
                 <xsl:value-of select="translate(., $uppercase, $smallcase)"/>
@@ -99,7 +95,7 @@
         </xsl:element>
     </xsl:template>
 
-    <xsl:template match="/eCVI/vetInspection/cviPG1/consignor">
+    <xsl:template match="eCVI/vetInspection/cviPG1/consignor">
         <xsl:element name="Origin">
             <xsl:call-template name="OriginDestination">
                 <xsl:with-param name="data" select="."/>
@@ -107,7 +103,7 @@
         </xsl:element>
     </xsl:template>
 
-    <xsl:template match="/eCVI/vetInspection/cviPG1/consignee">
+    <xsl:template match="eCVI/vetInspection/cviPG1/consignee">
         <xsl:element name="Destination">
             <xsl:call-template name="OriginDestination">
                 <xsl:with-param name="data" select="."/>
@@ -153,13 +149,13 @@
             <xsl:if test="$data/phoneNum and $data/phoneNum!=''">
                 <xsl:element name="Phone">
                     <xsl:attribute name="Type">Unknown</xsl:attribute>
-                    <xsl:attribute name="Number" select="$data/phoneNum"/>
+                    <xsl:attribute name="Number"><xsl:value-of select="$data/phoneNum"/></xsl:attribute> 
                 </xsl:element>
             </xsl:if>
         </xsl:element>
     </xsl:template>
 
-    <xsl:template match="/eCVI/vetInspection/cviPG1/consignor/ownerAdd">
+    <xsl:template match="eCVI/vetInspection/cviPG1/consignor/ownerAdd">
         <xsl:if test=".!=''">
             <xsl:element name="Consignor">
                 <xsl:element name="Person">
@@ -171,7 +167,7 @@
         </xsl:if>
     </xsl:template>
 
-    <xsl:template match="/eCVI/vetInspection/cviPG1/consignee/ownerAdd">
+    <xsl:template match="eCVI/vetInspection/cviPG1/consignee/ownerAdd">
         <xsl:if test=".!=''">
             <xsl:element name="Consignee">
                 <xsl:element name="Person">
@@ -183,12 +179,17 @@
         </xsl:if>
     </xsl:template>
 
-    <xsl:template match="/eCVI/vetInspection/cviPG1/species/large/table">
+    <xsl:template match="eCVI/vetInspection/cviPG1/species/large/table">
         <xsl:for-each select="item">
             <xsl:element name="Animal">
                 <xsl:attribute name="Age">
                     <xsl:call-template name="Age">
                         <xsl:with-param name="item" select="."/>
+                    </xsl:call-template>
+                </xsl:attribute>
+                <xsl:attribute name="SpeciesCode">
+                    <xsl:call-template name="Species">
+                        <xsl:with-param name="species" select="spp"/>
                     </xsl:call-template>
                 </xsl:attribute>
                 <xsl:attribute name="Breed">
@@ -202,29 +203,34 @@
                         <xsl:with-param name="sex" select="sex"/>
                     </xsl:call-template>
                 </xsl:attribute>
+                <xsl:attribute name="InspectionDate">
+                    <xsl:value-of select="../../../../inspDate"/>
+                </xsl:attribute>
+
                 <xsl:element name="AnimalTag">
                     <xsl:attribute name="Number">
                         <xsl:value-of select="./offID"/>
                     </xsl:attribute>
                 </xsl:element>
-                <xsl:if test="./eiaResult != 'N/A'">
+                <xsl:if test="./eiaResult != 'N/A' and ./eiaResult != ''">
                     <xsl:element name="Test">
                         <xsl:attribute name="idref">EIA<xsl:value-of select="./itemIndex"/></xsl:attribute>
                         <xsl:attribute name="TestCode">EIA</xsl:attribute>
-                        <xsl:attribute name="ResultName">RESULT</xsl:attribute>
                         <xsl:element name="Result">
+                            <xsl:attribute name="ResultName">RESULT</xsl:attribute>
                             <xsl:element name="ResultString">
                                 <xsl:value-of select="./eiaResult"/>
                             </xsl:element>
                         </xsl:element>
                     </xsl:element>
                 </xsl:if>
-                <xsl:if test="./brucResult != 'N/A'">
+                <xsl:if test="./brucResult != 'N/A' and ./brucResult != ''">
                     <xsl:element name="Test">
-                        <xsl:attribute name="idref">BRUC<xsl:value-of select="./itemIndex"/></xsl:attribute>
+                        <xsl:attribute name="idref">BRUC<xsl:value-of select="./itemIndex"
+                            /></xsl:attribute>
                         <xsl:attribute name="TestCode">BRUC</xsl:attribute>
-                        <xsl:attribute name="ResultName">RESULT</xsl:attribute>
                         <xsl:element name="Result">
+                            <xsl:attribute name="ResultName">RESULT</xsl:attribute>
                             <xsl:element name="ResultString">
                                 <xsl:value-of select="./brucResult"/>
                             </xsl:element>
@@ -238,48 +244,79 @@
     <xsl:template name="Age">
         <xsl:param name="item"/>
         <xsl:value-of select="$item/ageNum"/>
-        <xsl:value-of select="$item/ageTime"/>
+        <xsl:apply-templates select="$item/ageTime"/>
     </xsl:template>
 
+    <!-- Translate from simple English time interval abbreviations to UCUM units -->
+    <xsl:template match="ageTime">
+        <xsl:choose>
+            <xsl:when test=". = 'Y'">
+                <xsl:text>a</xsl:text>
+            </xsl:when>
+            <xsl:when test=". = 'M'">
+                <xsl:text>mo</xsl:text>
+            </xsl:when>
+            <xsl:when test=". = 'W'">
+                <xsl:text>wk</xsl:text>
+            </xsl:when>
+            <xsl:when test=". = 'D'">
+                <xsl:text>d</xsl:text>
+            </xsl:when>
+            <!-- Is this the appropriate way to react to no age units? -->
+            <xsl:when test=". = null or . = ''">
+                <xsl:text>a</xsl:text>
+            </xsl:when>
+            <xsl:otherwise><xsl:value-of select="."/></xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
+
+    <!-- Known bug.  Does not combine tests into accession if they share accession number and date. -->
     <xsl:template name="Accessions">
-        <xsl:if test="/eCVI/vetInspection/cviPG1/species/large/table/item[eiaTestDate != 'N/A'] or
-                      /eCVI/vetInspection/cviPG1/species/large/table/item[brucTestDate != 'N/A'] ">
-        <xsl:element name="Accessions">
-            <xsl:for-each
-                select="/eCVI/vetInspection/cviPG1/species/large/table/item[eiaTestDate != 'N/A']">
-                <xsl:element name="Accession">
-                    <xsl:attribute name="id">EIA<xsl:value-of select="./itemIndex"/></xsl:attribute>
-                    <xsl:attribute name="InfieldTest">
-                        <xsl:text>false</xsl:text>
-                    </xsl:attribute>
-                    <xsl:element name="Laboratory">
-                        <xsl:attribute name="AccessionDate">
-                            <xsl:value-of select="./eiaTestDate"/>
+        <xsl:if
+            test="/eCVI/vetInspection/cviPG1/species/large/table/item
+            and (/eCVI/vetInspection/cviPG1/species/large/table/item/eiaTestDate != 'N/A' or
+            /eCVI/vetInspection/cviPG1/species/large/table/item/brucTestDate != 'N/A')
+            and (/eCVI/vetInspection/cviPG1/species/large/table/item/eiaTestDate != '' or
+            /eCVI/vetInspection/cviPG1/species/large/table/item/brucTestDate != '') ">
+            
+            <xsl:element name="Accessions">
+                <xsl:for-each
+                    select="/eCVI/vetInspection/cviPG1/species/large/table/item[eiaTestDate != 'N/A' and eiaTestDate != '']">
+                    <xsl:element name="Accession">
+                        <xsl:attribute name="id">EIA<xsl:value-of select="./itemIndex"
+                            /></xsl:attribute>
+                        <xsl:attribute name="InfieldTest">
+                            <xsl:text>false</xsl:text>
                         </xsl:attribute>
-                        <xsl:attribute name="AccessionNumber">
-                            <xsl:value-of select="./other"/>
-                        </xsl:attribute>
-                        <xsl:element name="LabName">
-                            <xsl:value-of select="./eiaLab"/>
+                        <xsl:element name="Laboratory">
+                            <xsl:attribute name="AccessionDate">
+                                <xsl:value-of select="./eiaTestDate"/>
+                            </xsl:attribute>
+                            <xsl:attribute name="AccessionNumber">
+                                <xsl:value-of select="./other"/>
+                            </xsl:attribute>
+                            <xsl:element name="LabName">
+                                <xsl:value-of select="./eiaLab"/>
+                            </xsl:element>
                         </xsl:element>
                     </xsl:element>
-                </xsl:element>
-            </xsl:for-each>
-            <xsl:for-each
-                select="/eCVI/vetInspection/cviPG1/species/large/table/item[brucTestDate != 'N/A']">
-                <xsl:element name="Accession">
-                    <xsl:attribute name="id">BRUC<xsl:value-of select="./itemIndex"/></xsl:attribute>
-                    <xsl:attribute name="InfieldTest">
-                        <xsl:text>false</xsl:text>
-                    </xsl:attribute>
-                    <xsl:element name="Laboratory">
-                        <xsl:attribute name="AccessionDate">
-                            <xsl:value-of select="./brucTestDate"/>
+                </xsl:for-each>
+                <xsl:for-each
+                    select="/eCVI/vetInspection/cviPG1/species/large/table/item[brucTestDate != 'N/A' and brucTestDate != '']">
+                    <xsl:element name="Accession">
+                        <xsl:attribute name="id">BRUC<xsl:value-of select="./itemIndex"
+                            /></xsl:attribute>
+                        <xsl:attribute name="InfieldTest">
+                            <xsl:text>false</xsl:text>
                         </xsl:attribute>
+                        <xsl:element name="Laboratory">
+                            <xsl:attribute name="AccessionDate">
+                                <xsl:value-of select="./brucTestDate"/>
+                            </xsl:attribute>
+                        </xsl:element>
                     </xsl:element>
-                </xsl:element>
-            </xsl:for-each>
-        </xsl:element>
+                </xsl:for-each>
+            </xsl:element>
         </xsl:if>
     </xsl:template>
 

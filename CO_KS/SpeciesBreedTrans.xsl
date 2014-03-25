@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-    version="2.0">
+    version="1.0">
     
-    <!-- This is a placeholder for how to extract one species to put at top level -->
+    <!-- This is a placeholder for a lookup table to standard species codes -->
     <xsl:template name="Species">
-        <xsl:variable name="spp" select="/eCVI/vetInspection/cviPG1/species/large/table/item/spp"/>
+        <xsl:param name="species"/>
         <xsl:choose>
-            <xsl:when test="$spp ='BBOV'">BOV</xsl:when>
-            <xsl:when test="$spp ='DBOV'">BOV</xsl:when>
+            <xsl:when test="$species ='BBOV'">BOV</xsl:when>
+            <xsl:when test="$species ='DBOV'">BOV</xsl:when>
             <xsl:otherwise>
-                <xsl:value-of select="$spp"/>
+                <xsl:value-of select="$species"/>
             </xsl:otherwise>
         </xsl:choose>
-
     </xsl:template>
 
     <!-- This is a placeholder for a lookup table to standard codes -->
