@@ -8,11 +8,7 @@
     <!-- Get the terrible lookup code stuff out into its own file.  -->
     <xsl:include href="./SpeciesBreedTrans.xsl"/>
 
-    <xsl:template match="xfa:data">
-        <xsl:apply-templates select="eCVI"/>
-    </xsl:template>
-
-    <xsl:template match="eCVI">
+    <xsl:template match="/eCVI">
         <xsl:element name="eCVI">
             <xsl:attribute name="CviNumber">
                 <xsl:value-of select="certificate"/>
@@ -90,7 +86,9 @@
     <xsl:template match="eCVI/vetInspection/cviPG1/carrier/purpose">
         <xsl:element name="MovementPurposes">
             <xsl:element name="MovementPurpose">
-                <xsl:value-of select="translate(., $uppercase, $smallcase)"/>
+                <xsl:call-template name="PurposeMap">
+                    <xsl:with-param name="purpose" select="."/>
+                </xsl:call-template>
             </xsl:element>
         </xsl:element>
     </xsl:template>
@@ -273,11 +271,11 @@
     <!-- Known bug.  Does not combine tests into accession if they share accession number and date. -->
     <xsl:template name="Accessions">
         <xsl:if
-            test="/eCVI/vetInspection/cviPG1/species/large/table/item
-            and (/eCVI/vetInspection/cviPG1/species/large/table/item/eiaTestDate != 'N/A' or
-            /eCVI/vetInspection/cviPG1/species/large/table/item/brucTestDate != 'N/A')
-            and (/eCVI/vetInspection/cviPG1/species/large/table/item/eiaTestDate != '' or
-            /eCVI/vetInspection/cviPG1/species/large/table/item/brucTestDate != '') ">
+            test="/eCVI/vetInspection/cviPG1/species/large/table/item and (
+            (/eCVI/vetInspection/cviPG1/species/large/table/item/eiaTestDate != 'N/A' and
+                 /eCVI/vetInspection/cviPG1/species/large/table/item/eiaTestDate != '')
+             or (/eCVI/vetInspection/cviPG1/species/large/table/item/brucTestDate != 'N/A' and
+                 /eCVI/vetInspection/cviPG1/species/large/table/item/brucTestDate != '') )">
             
             <xsl:element name="Accessions">
                 <xsl:for-each
@@ -332,5 +330,28 @@
             <xsl:when test="$sex ='U'">Gender Unknown</xsl:when>
         </xsl:choose>
     </xsl:template>
+    
+    <xsl:template name="PurposeMap">
+        <xsl:param name="purpose"/>
+        <xsl:choose>
+            <xsl:when test="translate($purpose, $smallcase, $uppercase) = translate('Backgrounding', $smallcase, $uppercase) ">other</xsl:when>
+            <xsl:when test="translate($purpose, $smallcase, $uppercase) = translate('Breeding', $smallcase, $uppercase) ">breeding</xsl:when>
+            <xsl:when test="translate($purpose, $smallcase, $uppercase) = translate('Feeding', $smallcase, $uppercase) ">feeding</xsl:when>
+            <xsl:when test="translate($purpose, $smallcase, $uppercase) = translate('Grazing', $smallcase, $uppercase) ">grazing</xsl:when>
+            <xsl:when test="translate($purpose, $smallcase, $uppercase) = translate('Medical Treatment', $smallcase, $uppercase) ">medicalTreatment</xsl:when>
+            <xsl:when test="translate($purpose, $smallcase, $uppercase) = translate('Other (specify)', $smallcase, $uppercase) ">other</xsl:when>
+            <xsl:when test="translate($purpose, $smallcase, $uppercase) = translate('Pet', $smallcase, $uppercase) ">other</xsl:when>
+            <xsl:when test="translate($purpose, $smallcase, $uppercase) = translate('Production', $smallcase, $uppercase) ">other</xsl:when>
+            <xsl:when test="translate($purpose, $smallcase, $uppercase) = translate('Race', $smallcase, $uppercase) ">race</xsl:when>
+            <xsl:when test="translate($purpose, $smallcase, $uppercase) = translate('Recreational', $smallcase, $uppercase) ">other</xsl:when>
+            <xsl:when test="translate($purpose, $smallcase, $uppercase) = translate('Rodeo', $smallcase, $uppercase) ">rodeo</xsl:when>
+            <xsl:when test="translate($purpose, $smallcase, $uppercase) = translate('Sale', $smallcase, $uppercase) ">sale</xsl:when>
+            <xsl:when test="translate($purpose, $smallcase, $uppercase) = translate('Show/Exhibition', $smallcase, $uppercase) ">show</xsl:when>
+            <xsl:when test="translate($purpose, $smallcase, $uppercase) = translate('Slaughter', $smallcase, $uppercase) ">slaughter</xsl:when>
+            <xsl:when test="translate($purpose, $smallcase, $uppercase) = translate('Training', $smallcase, $uppercase) ">training</xsl:when>
+            <xsl:when test="translate($purpose, $smallcase, $uppercase) = translate('Transit', $smallcase, $uppercase) ">other</xsl:when>
+        </xsl:choose>
+    </xsl:template>
+    
 
 </xsl:stylesheet>
