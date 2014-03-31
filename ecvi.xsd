@@ -90,7 +90,7 @@
                                     <xs:documentation>This is the type of Units that the Quantity refers to. For example, it could be pounds or gallons.</xs:documentation>
                                 </xs:annotation>
                             </xs:attribute>
-                            <xs:attribute name="Species" type="SpeciesCodeType" use="optional"/>
+                            <xs:attribute name="SpeciesCode" type="SpeciesCodeType" use="optional"/>
                             <xs:attribute name="Age" type="AgeType" use="optional"/>
                             <xs:attribute name="Breed" type="BreedType" use="optional"/>
                             <xs:attribute name="Sex" type="SexType" use="optional"/>
