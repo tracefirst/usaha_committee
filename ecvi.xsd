@@ -152,14 +152,182 @@
             <xs:documentation>This enforces the list of allowed species codes that are supported.</xs:documentation>
         </xs:annotation>
         <xs:restriction base="xs:string">
-            <xs:enumeration value="UNK"/>
-            <xs:enumeration value="BOV"/>
-            <xs:enumeration value="CAP"/>
-            <xs:enumeration value="CER"/>
-            <xs:enumeration value="EQU"/>
-            <xs:enumeration value="OVI"/>
-            <xs:enumeration value="POR"/>
-        </xs:restriction>
+            <xs:enumeration value="AQU">
+                <xs:annotation>
+                    <xs:documentation>Aquaculture</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="AVI">
+                <xs:annotation>
+                    <xs:documentation>Avian</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="BEF">
+                <xs:annotation>
+                    <xs:documentation>Beef</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="BIS">
+                <xs:annotation>
+                    <xs:documentation>Bison</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="BOV">
+                <xs:annotation>
+                    <xs:documentation>Bovine (Bison and Cattle)</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="CAM">
+                <xs:annotation>
+                    <xs:documentation>Camelid (Alpacas, Llamas, etc.)</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="CAN">
+                <xs:annotation>
+                    <xs:documentation>Canine</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="CAP">
+                <xs:annotation>
+                    <xs:documentation>Caprine (Goats)</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="CER">
+                <xs:annotation>
+                    <xs:documentation>Cervids</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="CHI">
+                <xs:annotation>
+                    <xs:documentation>Chickens</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="CLM">
+                <xs:annotation>
+                    <xs:documentation>Clams</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="CRA">
+                <xs:annotation>
+                    <xs:documentation>Crawfish</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="CTF">
+                <xs:annotation>
+                    <xs:documentation>Catfish</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="DAI">
+                <xs:annotation>
+                    <xs:documentation>Dairy</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="DEE">
+                <xs:annotation>
+                    <xs:documentation>Deer</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="DUC">
+                <xs:annotation>
+                    <xs:documentation>Ducks</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="ELK">
+                <xs:annotation>
+                    <xs:documentation>Elk</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="EQU">
+                <xs:annotation>
+                    <xs:documentation>Equine (Horses, Mules, Donkeys, Burros)</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="FEL">
+                <xs:annotation>
+                    <xs:documentation>Feline</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="GEE">
+                <xs:annotation>
+                    <xs:documentation>Geese</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="GUI">
+                <xs:annotation>
+                    <xs:documentation>Guineas</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="MSL">
+                <xs:annotation>
+                    <xs:documentation>Mussels</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="OTH">
+                <xs:annotation>
+                    <xs:documentation>Other</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="OVI">
+                <xs:annotation>
+                    <xs:documentation>Ovine (Sheep)</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="OYS">
+                <xs:annotation>
+                    <xs:documentation>Oysters</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="POR">
+                <xs:annotation>
+                    <xs:documentation>Porcine (Swine)</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="QUA">
+                <xs:annotation>
+                    <xs:documentation>Quail</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="RTT">
+                <xs:annotation>
+                    <xs:documentation>Ratites (Emus, Ostriches, etc.)</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="SAL">
+                <xs:annotation>
+                    <xs:documentation>Salmon</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="SBA">
+                <xs:annotation>
+                    <xs:documentation>Striped Bass</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="SHR">
+                <xs:annotation>
+                    <xs:documentation>Shrimp</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="SLP">
+                <xs:annotation>
+                    <xs:documentation>Scallops</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="TIL">
+                <xs:annotation>
+                    <xs:documentation>Tilapia</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="TRO">
+                <xs:annotation>
+                    <xs:documentation>Trout</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="TUR">
+                <xs:annotation>
+                    <xs:documentation>Turkeys</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+      </xs:restriction>
     </xs:simpleType>
     <xs:simpleType name="AgeType">
         <xs:annotation>
