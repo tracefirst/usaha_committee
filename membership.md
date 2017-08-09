@@ -2,7 +2,7 @@ Co-chairs
 ==
 ```
 Michael McGrath                   mmcgrath@tracefirst.com
-Sara Ahola                        sara.ahola@state.co.us
+Dr Justin Smith                   justin.smith@ks.gov
 ```
 
 Members
@@ -25,6 +25,10 @@ Victor Velez                      VVelez@cdfa.ca.gov
 Stacey Schwabenlander             stacey.schwabenlander@state.mn.us
 Thach Winslow                     Thach.Winslow@wyo.gov
 John Conlon                       jconlon@verticon.com
+Randy Munger                      Randy.D.Munger@aphis.usda.gov
+Kim Tsao                          Kimberly.Tsao@aphis.usda.gov 
+Jeff Wilcke                       jwilcke@vt.edu
+Julie Green                       jmgreen@vt.edu
 ```
 
 Retired members
