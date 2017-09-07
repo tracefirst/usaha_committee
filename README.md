@@ -1,7 +1,13 @@
 USAHA sub-committee
 ===================
 
+Important
+=========
+
+This Repository is for Version 1 - subsequent versions are here: https://github.com/AAVLD-USAHA-ITStandards/eCVI
+
 XML schema for electronic CVIs
+
 
 This repository serves as the collaboration platform for the USAHA subcommittee looking at an XML standard for
 Electronic CVI interchange. If you are a subcommittee member, please send your github username to
